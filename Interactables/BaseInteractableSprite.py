@@ -8,7 +8,7 @@ from .InteractableArea import BaseInteractableArea
 """
 Class for InteractableSprites
 
-Args:
+Contructor:
 	name: 			str = Name of the Sprite 
 	description:	str = Description of the Sprite
 	image_path: 	str = Path for the sprite image

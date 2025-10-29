@@ -11,6 +11,18 @@ import Events
 
 from .InteractableArea import BaseInteractableArea
 
+"""
+Definition of InteractableArea class
+
+Description:
+	Class that creates basic rectangles with interactable properties
+
+Constructor:
+	rect:		(x, y, w, h)= Dimensions of the rect (as used by pygame.Rect, i dunno the order)
+	name: 			str 	= Name of the Sprite 
+	description:	str 	= Description of the Sprite
+"""
+
 class BaseInteractableRect(BaseInteractableArea, ABC):
 
 	def __init__(self, rect, name, description, **kwargs):
