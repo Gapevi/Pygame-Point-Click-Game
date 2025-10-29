@@ -21,6 +21,7 @@ Constructor:
 	rect:		(x, y, w, h)= Dimensions of the rect (as used by pygame.Rect, i dunno the order)
 	name: 			str 	= Name of the Sprite 
 	description:	str 	= Description of the Sprite
+	**kwargs:				= View BaseInteractableArea
 """
 
 class BaseInteractableRect(BaseInteractableArea, ABC):
