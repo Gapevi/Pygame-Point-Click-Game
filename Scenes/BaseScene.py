@@ -10,7 +10,9 @@ class BaseScene(ABC):
 		self.bg_img_path = background_image_path
 		self.bg_img_position = bg_img_position
 
-	def load_scene(self, surface): pass 
+		self.surface = None
+
+	def load_scene(self, surface): self.surface = surface 
 	def update_scene(self): pass
 
 	def on_load_scene(self): pass

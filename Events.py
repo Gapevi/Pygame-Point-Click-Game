@@ -14,3 +14,7 @@ class AlternateRoomEvent(BaseEvent):
 class AddItemEvent(BaseEvent):
 	def __init__(self, item):
 		self.item = item
+
+class PlaySoundEvent(BaseEvent):
+	def __init__(self, sound_ID):
+		self.sound_ID = sound_ID

@@ -4,6 +4,9 @@ import Events
 from Scenes.Room import Room
 
 from episodes.episode1 import e1_scenes
+from Scenes._main_menu_scene import _main_menu_scene
+
+import utils.sounds as sounds
 
 class Game:
 
@@ -51,7 +54,7 @@ class Game:
 
 		self.object_events = []
 
-
+		self.scn_mgr.main_menu = _main_menu_scene
 		self.scn_mgr.add_scenes(e1_scenes)
 
 
@@ -143,3 +146,6 @@ class Game:
 
 			elif isinstance(obj_event, Events.AddItemEvent):
 				self.player.Inventory.add_item(obj_event.item)
+
+			elif isinstance(obj_event, Events.PlaySoundEvent):
+				sounds.play_sound(obj_event.sound_ID)

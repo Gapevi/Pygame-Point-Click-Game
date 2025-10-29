@@ -33,6 +33,8 @@ class BaseInteractableSprite(BaseInteractableArea, pygame.sprite.Sprite, ABC):
 
 		self._initialized=False
 
+		self.is_hoverable=False
+
 		#self.image = pygame.image.load(resource_path(image_path)).convert()
 		#self.rect = self.image.get_rect()
 		#self.rect.topleft = position
@@ -62,16 +64,43 @@ class BaseInteractableSprite(BaseInteractableArea, pygame.sprite.Sprite, ABC):
 	def draw(self, surface):
 		surface.blit(self.image, self.rect)
 
-class TestInteractableSprite(BaseInteractableSprite):
-	def __init__(self, name, image, description, group, position=(0,0), **kwargs):
-		super().__init__(name, image, description, group, position, **kwargs)
+class HoverableSprite(BaseInteractableSprite):
+	def __init__(self, name, description, image_path, hovered_image_path, group, position=(0,0), **kwargs):
+		super().__init__(name, description, image_path, group, position, **kwargs)
 
-	def interact(self):
-		sounds.play_swoosh()
-		return self.event
+		self.hovered_image_path = hovered_image_path
 
-	def on_clicked(self):
-		sounds.play_punch()
+	def ready(self, surface):
+		if self._initialized: return
+
+		self.surface = surface
+
+		self.image = pygame.image.load(resource_path(self.image_path))#.convert()
+		self.hovered_image = pygame.image.load(resource_path(self.hovered_image_path))#.convert()
+
+		self.rect = self.image.get_rect()
+		self.rect.topleft = self.position
+		BaseInteractableArea.__init__(self, self.rect, self.name, self.description, **self._kwargs)
+
+		self.image.set_alpha(self.transparency)
+		self.hovered_image.set_alpha(self.transparency)
+
+		self._initialized=True  
+
+
+
+	def draw(self, surface):
+		if self.is_hovered:
+			surface.blit(self.hovered_image, self.rect)
+		else:
+			surface.blit(self.image, self.rect)
+
+	def interact(self): return self.event 
+
+	def on_clicked(self): sounds.play_alarm()
+
+
+
 
 class InteractableSprite(BaseInteractableSprite):
 	def __init__(self, name, image, description, group, position=(0,0), **kwargs):

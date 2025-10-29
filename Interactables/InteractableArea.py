@@ -49,15 +49,17 @@ class BaseInteractableArea(ABC):
 	def check_hover(self, pos):
 		if not self.enabled: return
 		if self.area.collidepoint(pos):
+			self.is_hovered = True
 			self._hover()
 		else:
+			self.is_hovered = False
 			self._unhover()
 		return self.is_hovered
 
 	@abstractmethod
 	def on_clicked(self): pass
 	@abstractmethod
-	def interact(self): pass
+	def interact(self): return self.event
 
 	def on_hover(self): pass
 	def on_unhover(self): pass

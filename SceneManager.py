@@ -11,8 +11,10 @@ class SceneMgr:
 
 		self.surface = surface
 
+		self.main_menu = None
+
 	def ready(self):
-		self.current_scene = self.Rooms["START"]
+		self.current_scene = self.Rooms["START"] if not self.main_menu else self.main_menu
 		self.current_scene.load_scene(self.surface)
 
 	# TODO: Maybe there's a better implementation to get mouse_pos

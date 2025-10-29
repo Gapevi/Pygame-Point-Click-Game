@@ -5,7 +5,7 @@ class Camera:
         self.screen_width = screen_width
         self.screen_height = screen_height
         self.smooth_factor = 0.1
-        self.max_offset = 80
+        self.max_offset = 40
 
 #       // Moved from update() cuz the dimensions of screen are static
         self.screen_center_x = self.screen_width / 2
