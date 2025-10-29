@@ -8,6 +8,9 @@ from .InteractableArea import BaseInteractableArea
 """
 Class for InteractableSprites
 
+Description:
+	Class that creates an image using it's rect as base for interaction
+
 Contructor:
 	name: 			str = Name of the Sprite 
 	description:	str = Description of the Sprite
