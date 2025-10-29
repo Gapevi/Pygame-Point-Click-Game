@@ -68,6 +68,11 @@ class BaseInteractableRect(BaseInteractableArea, ABC):
 			text_rect = text.get_rect(center=self.rect.center)
 			surface.blit(text, text_rect)
 
+class InteractableRect(BaseInteractableRect):
+
+	def __init__(self, rect, name, description, **kwargs):
+		super().__init__(rect, name, description, **kwargs)
+
 class TestBaseInteractableRect(BaseInteractableRect):
 
 	def __init__(self, rect, name, description, **kwargs):
